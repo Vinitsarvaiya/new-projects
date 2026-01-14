@@ -30,6 +30,13 @@ const AuthMiddlewarePage = () => {
         <li>
           <p className="mb-2">Install JWT dependency</p>
           <CopyableCode code="npm install jsonwebtoken" />
+          <CopyableCode code="npm i -D @types/jsonwebtoken" />
+        </li>
+
+         <li>
+          <p className="mb-2">add this env variables ATSECRETKEY</p>
+          <CopyableCode code="ATSECRETKEY=70ddb3fae600f0dfbd4a3448d9827c933d3f740c60af104417a41b5fa7c47b46" />
+          <CopyableCode code="RTSECRETKEY=73066c3ec12279165da01d6fc1215ee011f4df2108f6005b2a92e4d3b796a330" />
         </li>
 
         {/* Step 4 */}
@@ -51,7 +58,13 @@ const authMiddleware = Handler(async (req, res, next) => {
 
     const token = authorization.split(" ")[1];
 
-    const decodedToken: any = await Jsonwebtoken.verify(token, process.env.ATSECRETKEY);
+    const ATSECRETKEY = process.env.ATSECRETKEY;
+
+    if(!ATSECRETKEY){
+        return res.status(500).json({ error: "server issue" });
+    }
+    
+    const decodedToken: any = await Jsonwebtoken.verify(token, ATSECRETKEY);
 
     if (!decodedToken) {
       return res.status(403).json({ error: "Forbidden: Invalid token" });
@@ -231,7 +244,7 @@ export default app;`}
           </p>
           <CopyableCode
             block
-            code={`import { NextFunction, Request, Response } from "express";
+            code={`import type { NextFunction, Request, Response } from "express";
 
 /**
  * Handler Utility
