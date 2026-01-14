@@ -8,7 +8,7 @@ const Layout = ({ children }: { children: any }) => {
       <Navbar />
       <main className="p-6">{children}</main>
       <Toaster
-        position="bottom-center"
+        position="bottom-right"
         toastOptions={{
           style: {
             background: "#1f2937",

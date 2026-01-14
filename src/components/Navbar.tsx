@@ -6,10 +6,14 @@ const Navbar = () => {
     <nav className="bg-gray-800 p-4 flex gap-4">
       <Link className="text-teal-400 hover:underline" to="/nextjs">Next.js</Link>
       <Link className="text-teal-400 hover:underline" to="/reactjs">React.js</Link>
+       <Link className="text-teal-400 hover:underline" to="/hooks">Hooks</Link>
       <Link className="text-teal-400 hover:underline" to="/backend">Backend</Link>
       <Link className="text-teal-400 hover:underline" to="/middleware">Middleware</Link>
+      <Link className="text-teal-400 hover:underline" to="/tokens">Tokens</Link>
+      <Link className="text-teal-400 hover:underline" to="/fileupload">FileUpload</Link>
       <Link className="text-teal-400 hover:underline" to="/mongodb">MongoDb</Link>
       <Link className="text-teal-400 hover:underline" to="/mongodbcommand">MongoDbCommand</Link>
+      <Link className="text-teal-400 hover:underline" to="/postgress">Postgress</Link>
       <Link className="text-teal-400 hover:underline" to="/tailwind">Tailwind/Vite</Link>
     </nav>
   );
