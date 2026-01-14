@@ -111,7 +111,7 @@ export default router;`}
 
 
 
-       <h1 className="text-3xl font-bold text-indigo-400 mb-6 mt-16">
+      <h1 className="text-3xl font-bold text-indigo-400 mb-6 mt-16">
         User Routes Setup with Auth Middleware
       </h1>
 
@@ -206,6 +206,60 @@ export default app;`}
         <li>
           <p className="mb-2">Start your server</p>
           <CopyableCode code="npm run dev" />
+        </li>
+
+      </ol>
+
+
+
+      <h1 className="text-3xl font-bold text-indigo-400 mb-6 mt-16">
+        Async Handler Utility (Error Wrapper)
+      </h1>
+
+      <ol className="list-decimal ml-6 space-y-4">
+
+        {/* Step 1 */}
+        <li>
+          <p className="mb-2">Create handler utility file </p>
+          <CopyableCode code="touch src/utils/handler.ts" />
+        </li>
+
+        {/* Step 2 */}
+        <li>
+          <p className="mb-2">
+            Add async error-handling wrapper (used by middleware & controllers)
+          </p>
+          <CopyableCode
+            block
+            code={`import { NextFunction, Request, Response } from "express";
+
+/**
+ * Handler Utility
+ * Wraps async route handlers and middleware
+ * Automatically forwards errors to Express error handler
+ */
+export default function (fn: Function) {
+  return (req: Request, res: Response, next: NextFunction) => {
+    Promise.resolve(fn(req, res, next)).catch(next);
+  };
+}`}
+          />
+        </li>
+
+        {/* Step 3 */}
+        <li>
+          <p className="mb-2">Example usage in middleware or controller</p>
+          <CopyableCode
+            block
+            code={`import Handler from "../utils/handler";
+
+const exampleController = Handler(async (req, res) => {
+  // Any thrown error is automatically caught
+  res.json({ success: true });
+});
+
+export default exampleController;`}
+          />
         </li>
 
       </ol>
