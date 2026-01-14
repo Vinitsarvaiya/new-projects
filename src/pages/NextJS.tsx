@@ -1,5 +1,4 @@
 // src/pages/NextJS.tsx
-import React from "react";
 import Layout from "../components/Layout";
 
 const NextJS = () => {

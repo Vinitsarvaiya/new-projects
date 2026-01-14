@@ -1,5 +1,4 @@
 // src/App.tsx
-import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import NextJS from "./pages/NextJS";
 import ReactJS from "./pages/ReactJS";
