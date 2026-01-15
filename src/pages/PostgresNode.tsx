@@ -10,6 +10,54 @@ const PostgresPrismaWorkflow = () => {
       </h1>
 
       <ol className="list-decimal ml-6 space-y-4">
+  <li>
+    Open <b>pgAdmin</b> and connect to your PostgreSQL server.
+  </li>
+
+  <li>
+    In the left panel go to:
+    <br />
+    <b>Servers → Your Server → Login/Group Roles</b>
+    <br />
+    Your username will usually be <b>postgres</b>.
+  </li>
+
+  <li>
+    If you don’t know the password:
+    <ul className="list-disc ml-6 mt-2">
+      <li>Right-click <b>postgres</b></li>
+      <li>Click <b>Properties</b></li>
+      <li>Go to <b>Definition</b></li>
+      <li>Set password: <b>123</b></li>
+      <li>Click <b>Save</b></li>
+    </ul>
+  </li>
+
+  <li>
+    Find your database name under:
+    <br />
+    <b>Servers → Your Server → Databases</b>
+    <br />
+    Example: <b>mydb</b>
+  </li>
+
+  <li>
+    Use this final DATABASE_URL in your <b>.env</b> file:
+    <pre className="bg-gray-800 text-white p-2 rounded mt-2">
+DATABASE_URL="postgresql://postgres:123@localhost:5432/mydb?schema=public"
+    </pre>
+  </li>
+
+  <li>
+    To verify, run in terminal:
+    <pre className="bg-gray-800 text-white p-2 rounded mt-2">
+psql "postgresql://postgres:123@localhost:5432/mydb"
+    </pre>
+  </li>
+</ol>
+
+
+      <ol className="list-decimal ml-6 space-y-4">
         {/* Step 1 */}
         <li>
           <p>Install Prisma and client:</p>
