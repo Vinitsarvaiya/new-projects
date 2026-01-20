@@ -7,15 +7,105 @@ export interface DocItem {
     title: string;
     items: DocItem[];
   }
-  
-  export const docsConfig: DocSectionConfig[] = [
-    {
-      title: "Getting Started",
-      items: [
-        { id: "what-is-nextjs", label: "What is Next.js?" },
-        { id: "how-to-use-docs", label: "How to use the docs" },
-        { id: "next-steps", label: "Next Steps" },
-      ],
-    },
-  ];
+
+// data/docsConfig.ts
+export interface DocItem {
+  id: string;
+  label: string;
+  children?: DocItem[];
+}
+
+export interface DocSection {
+  title: string;
+  collapsible?: boolean;
+  items: DocItem[];
+}
+
+export const docsConfig: DocSection[] = [
+  {
+    title: "API Reference",
+    collapsible: true,
+    items: [
+      {
+        id: "directives",
+        label: "Directives",
+        children: [
+          { id: "use-cache", label: "use cache" },
+          { id: "use-cache-private", label: "use cache: private" },
+          { id: "use-cache-remote", label: "use cache: remote" },
+          { id: "use-client", label: "use client" },
+          { id: "use-server", label: "use server" },
+        ],
+      },
+    ],
+  },
+  {
+    title: "Components",
+    collapsible: true,
+    items: [
+      { id: "font", label: "Font" },
+      { id: "image", label: "Image" },
+      { id: "link", label: "Link" },
+      { id: "script", label: "Script" },
+    ],
+  },
+  {
+    title: "Architecture",
+    collapsible: false,
+    items: [
+      { id: "accessibility", label: "Accessibility" },
+      { id: "fast-refresh", label: "Fast Refresh" },
+      { id: "compiler", label: "Next.js Compiler" },
+      { id: "browsers", label: "Supported Browsers" },
+    ],
+  },
+  {
+    title: "Architecture",
+    collapsible: false,
+    items: [
+      { id: "accessibility", label: "Accessibility" },
+      { id: "fast-refresh", label: "Fast Refresh" },
+      { id: "compiler", label: "Next.js Compiler" },
+      { id: "browsers", label: "Supported Browsers" },
+    ],
+  },
+  {
+    title: "Architecture",
+    collapsible: false,
+    items: [
+      { id: "accessibility", label: "Accessibility" },
+      { id: "fast-refresh", label: "Fast Refresh" },
+      { id: "compiler", label: "Next.js Compiler" },
+      { id: "browsers", label: "Supported Browsers" },
+    ],
+  },
+  {
+    title: "Architecture",
+    collapsible: false,
+    items: [
+      { id: "accessibility", label: "Accessibility" },
+      { id: "fast-refresh", label: "Fast Refresh" },
+      { id: "compiler", label: "Next.js Compiler" },
+      { id: "browsers", label: "Supported Browsers" },
+    ],
+  },
+  {
+    title: "Community",
+    collapsible: false,
+    items: [
+      { id: "contribution", label: "Contribution Guide" },
+      { id: "rspack", label: "Rspack 🧪" },
+    ],
+  },
+];
+
+
+export const versions = [
+  { label: "Latest", version: "16.1.4", active: true },
+  { label: "Version 15", version: "15.5.9" },
+  { label: "Version 14", version: "14.2.35" },
+  { label: "Version 13", version: "13.5.11" },
+];
+
+
   

@@ -12,13 +12,13 @@
 // import UserHookDoc from "./pages/Hokks";
 // import PostgresNode from "./pages/PostgresNode";
 import Navbar from "./components/navbar/Navbar";
-// import Docs from "./pages/Docs";
+import Docs from "./pages/Docs";
 
 function App() {
   return (
     <div className="min-h-screen bg-black text-white">
     <Navbar />
-    {/* <Docs /> */}
+    <Docs />
     </div>
   );
 }
