@@ -8,19 +8,38 @@ interface Heading {
 }
 
 const RightSidebar = () => {
-  const [headings,] = useState<Heading[]>(() => {
-    if (typeof window === "undefined") return [];
-
-    return Array.from(
-      document.querySelectorAll("h3[id^='section-']")
-    ).map((el) => ({
-      id: (el as HTMLElement).id,
-      text: el.textContent || "",
-    }));
-  });
-
+  const [headings, setHeadings] = useState<Heading[]>([]);
   const [activeId, setActiveId] = useState("");
 
+  // 1️⃣ Collect headings AFTER render
+  useEffect(() => {
+    const collectHeadings = () => {
+      const nodes = Array.from(
+        document.querySelectorAll<HTMLElement>("h3[id^='section-']")
+      );
+
+      setHeadings(
+        nodes.map((el) => ({
+          id: el.id,
+          text: el.textContent?.trim() || "",
+        }))
+      );
+    };
+
+    collectHeadings();
+
+    // 2️⃣ Watch for DOM changes (docs change / slug change)
+    const observer = new MutationObserver(collectHeadings);
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  // 3️⃣ Scroll spy
   useEffect(() => {
     if (!headings.length) return;
 
@@ -51,7 +70,7 @@ const RightSidebar = () => {
   return (
     <div className="px-4 py-6 text-sm">
       <h4 className="text-zinc-400 mb-4">On this page</h4>
-  
+
       <ul className="space-y-2">
         {headings.map((h) => (
           <li key={h.id}>
@@ -70,7 +89,6 @@ const RightSidebar = () => {
       </ul>
     </div>
   );
-  
 };
 
 export default RightSidebar;

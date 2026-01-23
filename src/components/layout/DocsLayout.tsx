@@ -44,27 +44,30 @@ const DocsLayout = ({ children }: DocsLayoutProps) => {
       {/* DESKTOP LAYOUT */}
       <div className="flex flex-1 h-[calc(100vh-56px)] md:h-screen">
         {/* LEFT SIDEBAR */}
-        <aside className="hidden md:block w-72 border-r border-zinc-800 flex-shrink-0 h-screen fixed top-14 left-0">
+        <aside className="hidden md:block w-72 flex-shrink-0 h-screen fixed top-14 left-0">
           <div className="h-full overflow-y-auto">
             <LeftSidebar />
           </div>
         </aside>
 
         {/* MAIN CONTENT */}
-        <main className="flex-1 px-4 sm:px-6 md:px-10 py-6 overflow-y-auto
-                 md:ml-72 xl:mr-56">
+        <main
+          className="
+    flex-1 px-4 sm:px-6 md:px-10 py-6 overflow-y-auto
+    md:ml-72 xl:mr-72
+  "
+        >
           {children}
         </main>
 
 
 
-        {/* RIGHT SIDEBAR */}
-        {/* RIGHT SIDEBAR */}
-<aside className="hidden xl:block w-56 border-l border-zinc-800 fixed top-14 right-0 h-[calc(100vh-56px)]">
-  <div className="h-full overflow-y-auto">
-    <RightSidebar />
-  </div>
-</aside>
+        <aside className="hidden xl:block w-72 fixed top-14 right-0 h-[calc(100vh-56px)]">
+          <div className="h-full overflow-y-auto">
+            <RightSidebar />
+          </div>
+        </aside>
+
       </div>
     </div>
   );

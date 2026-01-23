@@ -16,13 +16,13 @@ const LeftSidebar = () => {
   };
 
   return (
-    <aside className="w-full md:w-72 border-r border-zinc-800 flex flex-col bg-black">
+    <aside className="w-full md:w-72 flex flex-col bg-black">
       {/* 🔒 Fixed Top */}
-      <div className="px-4 pt-6">
+      <div className="px-2 pt-6 mb-4">
         <SidebarTop />
       </div>
 
-      <div className="border-t border-zinc-800 my-2" />
+      {/* <div className="border-t border-zinc-800 my-2" /> */}
 
       {/* 🧠 Scrollable Nav */}
       <div className="flex-1 overflow-y-auto px-4 pb-6 sidebar-scroll">
@@ -61,7 +61,7 @@ const LeftSidebar = () => {
                     <li key={item.id}>
                       {!item.children ? (
                         <a
-                          href={`#${item.id}`}
+                          href={`${item.id}`}
                           className="block text-sm text-zinc-400 hover:text-blue-400"
                         >
                           {item.label}
@@ -75,7 +75,7 @@ const LeftSidebar = () => {
                             {item.children.map((child) => (
                               <li key={child.id}>
                                 <a
-                                  href={`#${child.id}`}
+                                  href={`${child.id}`}
                                   className="block text-sm text-zinc-500 hover:text-blue-400"
                                 >
                                   {child.label}

@@ -1,5 +1,5 @@
 // src/App.tsx
-// import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 // import NextJS from "./pages/NextJS";
 // import ReactJS from "./pages/ReactJS";
 // import Backend from "./pages/Backend";
@@ -13,12 +13,30 @@
 // import PostgresNode from "./pages/PostgresNode";
 import Navbar from "./components/navbar/Navbar";
 import Docs from "./pages/Docs";
+import { reactDocs, reactRedux } from "./data/ReactDocs";
+
 
 function App() {
   return (
     <div className="min-h-screen bg-black text-white sidebar-scroll">
     <Navbar />
-    <Docs />
+    <Router>
+      <Routes>
+        <Route path="/" element={<Navigate to="/setup" />} />
+        <Route path="/setup" element={<Docs src={reactDocs}/>} />
+        <Route path="/redux-setup" element={<Docs src={reactRedux}/>} />
+        {/* <Route path="/nextjs" element={<NextJS />} />
+         <Route path="/hooks" element={<UserHookDoc />} />
+        <Route path="/backend" element={<Backend />} />
+        <Route path="/tokens" element={<TokenCreation />}/>
+        <Route path="/tailwind" element={<TailwindVite />} />
+        <Route path="/mongodb" element={<MongoDB />} />
+        <Route path="/postgress" element={<PostgresNode />} />
+        <Route path="/mongodbcommand" element={<MongoCommands />} />
+        <Route path="/middleware" element={<AuthMiddlewarePage />}/>
+        <Route path="/fileupload" element={<FileUpload />}/> */}
+      </Routes>
+    </Router>
     </div>
   );
 }

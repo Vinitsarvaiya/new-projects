@@ -22,53 +22,53 @@ export interface DocSection {
 }
 
 export const docsConfig: DocSection[] = [
+  // {
+  //   title: "API Reference",
+  //   collapsible: true,
+  //   items: [
+  //     {
+  //       id: "directives",
+  //       label: "Directives",
+  //       children: [
+  //         { id: "use-cache", label: "use cache" },
+  //         { id: "use-cache-private", label: "use cache: private" },
+  //         { id: "use-cache-remote", label: "use cache: remote" },
+  //         { id: "use-client", label: "use client" },
+  //         { id: "use-server", label: "use server" },
+  //       ],
+  //     },
+  //   ],
+  // },
+  // {
+  //   title: "Components",
+  //   collapsible: true,
+  //   items: [
+  //     { id: "font", label: "Font" },
+  //     { id: "image", label: "Image" },
+  //     { id: "link", label: "Link" },
+  //     { id: "script", label: "Script" },
+  //   ],
+  // },
   {
-    title: "API Reference",
-    collapsible: true,
-    items: [
-      {
-        id: "directives",
-        label: "Directives",
-        children: [
-          { id: "use-cache", label: "use cache" },
-          { id: "use-cache-private", label: "use cache: private" },
-          { id: "use-cache-remote", label: "use cache: remote" },
-          { id: "use-client", label: "use client" },
-          { id: "use-server", label: "use server" },
-        ],
-      },
-    ],
-  },
-  {
-    title: "Components",
-    collapsible: true,
-    items: [
-      { id: "font", label: "Font" },
-      { id: "image", label: "Image" },
-      { id: "link", label: "Link" },
-      { id: "script", label: "Script" },
-    ],
-  },
-  {
-    title: "Architecture",
+    title: "React.Js",
     collapsible: false,
     items: [
-      { id: "accessibility", label: "Accessibility" },
-      { id: "fast-refresh", label: "Fast Refresh" },
-      { id: "compiler", label: "Next.js Compiler" },
-      { id: "browsers", label: "Supported Browsers" },
+      { id: "setup", label: "setup" },
+      { id: "redux-setup", label: "redux-setup" },
+      // { id: "compiler", label: "Next.js Compiler" },
+      // { id: "browsers", label: "Supported Browsers" },
     ],
   },
-  {
-    title: "Architecture",
-    collapsible: false,
-    items: [
-      { id: "accessibility", label: "Accessibility" },
-      { id: "fast-refresh", label: "Fast Refresh" },
-      { id: "compiler", label: "Next.js Compiler" },
-      { id: "browsers", label: "Supported Browsers" },
-    ],
-  }
+  // {
+  //   title: "Architecture",
+  //   collapsible: false,
+  //   items: [
+  //     { id: "accessibility", label: "Accessibility" },
+  //     { id: "fast-refresh", label: "Fast Refresh" },
+  //     { id: "compiler", label: "Next.js Compiler" },
+  //     { id: "browsers", label: "Supported Browsers" },
+  //   ],
+  // }
 ];
 
 

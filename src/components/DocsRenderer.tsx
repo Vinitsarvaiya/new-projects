@@ -1,6 +1,7 @@
 import CodeBlock from "./CodeBlock";
 import DocSection from "./docs/DocSection";
 
+
 interface DocsRendererProps {
   data: {
     title: string;
@@ -11,6 +12,7 @@ interface DocsRendererProps {
       code?: string;
       codes?: string[];
       block?: boolean;
+      important?: boolean;
     }[];
   }[];
 }
@@ -23,6 +25,7 @@ const DocsRenderer = ({ data }: DocsRendererProps) => {
           key={i}
           id={i.toString()}
           title={doc.title}
+          isLast={i === data.length - 1}
         >
           {/* Description */}
           {doc.description && (
@@ -49,18 +52,49 @@ const DocsRenderer = ({ data }: DocsRendererProps) => {
             "
           >
             {doc.sections.map((section, j) => (
-              <li key={j} className="space-y-3">
+             <li
+             key={j}
+             className={`
+               space-y-3
+               ${
+                 section.important
+                   ? "border-l-2 border-yellow-400/50 pl-4"
+                   : ""
+               }
+             `}
+           >
+           
                 {/* Section heading */}
                 <h3
                   id={`section-${i}-${j}`}
-                  className="
-                    font-semibold
-                    text-gray-200
-                    scroll-mt-24
-                    text-base
-                    sm:text-lg
-                  "
+                  className={`
+    flex items-center gap-2
+    font-semibold
+    scroll-mt-24
+    text-base sm:text-lg
+    ${section.important
+                      ? "text-yellow-400"
+                      : "text-gray-200"
+                    }
+  `}
                 >
+                  {section.important && (
+                    <span
+                      className={`
+        text-[10px]
+        uppercase
+        tracking-wide
+        px-2 py-0.5
+        rounded-full
+        bg-yellow-400/10
+        text-yellow-400
+        border border-yellow-400/20
+      `}
+                    >
+                      Important
+                    </span>
+                  )}
+
                   {section.heading}
                 </h3>
 
