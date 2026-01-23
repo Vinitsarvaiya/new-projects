@@ -68,35 +68,7 @@ export const docsConfig: DocSection[] = [
       { id: "compiler", label: "Next.js Compiler" },
       { id: "browsers", label: "Supported Browsers" },
     ],
-  },
-  {
-    title: "Architecture",
-    collapsible: false,
-    items: [
-      { id: "accessibility", label: "Accessibility" },
-      { id: "fast-refresh", label: "Fast Refresh" },
-      { id: "compiler", label: "Next.js Compiler" },
-      { id: "browsers", label: "Supported Browsers" },
-    ],
-  },
-  {
-    title: "Architecture",
-    collapsible: false,
-    items: [
-      { id: "accessibility", label: "Accessibility" },
-      { id: "fast-refresh", label: "Fast Refresh" },
-      { id: "compiler", label: "Next.js Compiler" },
-      { id: "browsers", label: "Supported Browsers" },
-    ],
-  },
-  {
-    title: "Community",
-    collapsible: false,
-    items: [
-      { id: "contribution", label: "Contribution Guide" },
-      { id: "rspack", label: "Rspack 🧪" },
-    ],
-  },
+  }
 ];
 
 

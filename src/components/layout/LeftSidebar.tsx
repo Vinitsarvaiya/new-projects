@@ -16,7 +16,7 @@ const LeftSidebar = () => {
   };
 
   return (
-    <aside className="w-72 border-r border-zinc-800 flex flex-col h-screen bg-black">
+    <aside className="w-full md:w-72 border-r border-zinc-800 flex flex-col bg-black">
       {/* 🔒 Fixed Top */}
       <div className="px-4 pt-6">
         <SidebarTop />
