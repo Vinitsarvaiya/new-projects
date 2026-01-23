@@ -5,11 +5,10 @@ import DoneAllIcon from "@mui/icons-material/DoneAll";
 
 interface CodeBlockProps {
   code: string;
-  language?: string;
   type?: "terminal" | "box"; // type of block
 }
 
-const CodeBlock = ({ code, language, type = "terminal" }: CodeBlockProps) => {
+const CodeBlock = ({ code, type = "terminal" }: CodeBlockProps) => {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
