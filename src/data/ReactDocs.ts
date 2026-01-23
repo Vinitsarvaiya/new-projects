@@ -76,6 +76,106 @@ export const reactDocs = [
     },
 ];
 
+export const reactAxios = [
+    {
+      title: "Axios Setup",
+      description:
+        "Global Axios configuration with environment-based base URL and request/response interceptors.",
+      sections: [
+        {
+          heading: "Install dependencies",
+          description: "Axios HTTP client with TypeScript support.",
+          codes: [
+            "npm install axios",
+            "npm install -D @types/axios",
+          ],
+        },
+        {
+          heading: "Environment Variables (Vite)",
+          description:
+            "Vite requires environment variables to start with VITE_. Restart dev server after adding.",
+          codes: [
+            "VITE_BACKEND_URL=http://localhost:5000",
+          ],
+        },
+        {
+          heading: "Create Axios Instance",
+          description:
+            "Centralized Axios instance with base URL and JSON headers.",
+          block: true,
+          code: `// src/api/axios.ts
+  import axios, { type AxiosResponse } from "axios";
+  
+  /** Common API success response type */
+  export type APISuccessResponse<T = undefined> = {
+    error: boolean;
+    message: string;
+    data: T;
+    response: AxiosResponse<T>;
+  };
+  
+  /** Backend base URL */
+  const API_BASE_URL = import.meta.env.VITE_BACKEND_URL;
+  
+  if (!API_BASE_URL) {
+    console.error("VITE_BACKEND_URL is missing");
+  }
+  
+  /** Axios instance */
+  const api = axios.create({
+    baseURL: API_BASE_URL,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+
+   /**
+   * All belowe code will be added here
+   */
+
+  
+  export default api;`,
+        },
+        {
+          heading: "Request Interceptor",
+          description:
+            "Automatically attach JWT token to every request.",
+          block: true,
+          code: `// Attach token to requests
+  api.interceptors.request.use(
+    (config) => {
+      const token = localStorage.getItem("token");
+      if (token) {
+        config.headers.Authorization = \`Bearer \${token}\`;
+      }
+      return config;
+    },
+    (error) => Promise.reject(error)
+  );`,
+        },
+        {
+          heading: "Response Interceptor",
+          description:
+            "Handle unauthorized responses globally.",
+          block: true,
+          code: `// Handle 401 responses
+  api.interceptors.response.use(
+    (response) => response,
+    (error) => {
+      if (error.response?.status === 401) {
+        localStorage.removeItem("token");
+        // optional: window.location.href = "/login";
+      }
+      return Promise.reject(error);
+    }
+  );`,
+        },
+      ],
+    },
+  ];
+  
+
 export const reactRedux = [
     {
         title: "Redux Toolkit Setup",

@@ -13,7 +13,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 // import PostgresNode from "./pages/PostgresNode";
 import Navbar from "./components/navbar/Navbar";
 import Docs from "./pages/Docs";
-import { reactDocs, reactRedux } from "./data/ReactDocs";
+import { reactAxios, reactDocs, reactRedux } from "./data/ReactDocs";
 
 
 function App() {
@@ -24,6 +24,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/setup" />} />
         <Route path="/setup" element={<Docs src={reactDocs}/>} />
+        <Route path="/axios" element={<Docs src={reactAxios}/>} />
         <Route path="/redux-setup" element={<Docs src={reactRedux}/>} />
         {/* <Route path="/nextjs" element={<NextJS />} />
          <Route path="/hooks" element={<UserHookDoc />} />

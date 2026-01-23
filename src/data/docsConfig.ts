@@ -54,6 +54,7 @@ export const docsConfig: DocSection[] = [
     collapsible: false,
     items: [
       { id: "setup", label: "setup" },
+      { id: "axios", label: "axios-setup" },
       { id: "redux-setup", label: "redux-setup" },
       // { id: "compiler", label: "Next.js Compiler" },
       // { id: "browsers", label: "Supported Browsers" },
