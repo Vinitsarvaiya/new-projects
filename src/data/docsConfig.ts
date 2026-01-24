@@ -56,6 +56,7 @@ export const docsConfig: DocSection[] = [
       { id: "setup", label: "setup" },
       { id: "axios", label: "axios-setup" },
       { id: "redux-setup", label: "redux-setup" },
+      { id: "router-setup", label: "router-setup" },
       // { id: "compiler", label: "Next.js Compiler" },
       // { id: "browsers", label: "Supported Browsers" },
     ],
