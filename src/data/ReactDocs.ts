@@ -210,6 +210,27 @@ export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;`,
       },
       {
+        heading: "Wrap App with Redux Provider",
+        important: true,
+        description:
+          "src/main.tsx",
+        block: true,
+        code: `// src/main.tsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
+import { store } from "./store";
+import App from "./App";
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </React.StrictMode>
+);`,
+      },
+      {
         heading: "Create Auth Async Actions( Action paege for redux)",
         description:
           "here is paths --> src/store/actions/authantication.actions.ts",

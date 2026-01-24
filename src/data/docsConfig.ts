@@ -39,16 +39,6 @@ export const docsConfig: DocSection[] = [
   //     },
   //   ],
   // },
-  // {
-  //   title: "Components",
-  //   collapsible: true,
-  //   items: [
-  //     { id: "font", label: "Font" },
-  //     { id: "image", label: "Image" },
-  //     { id: "link", label: "Link" },
-  //     { id: "script", label: "Script" },
-  //   ],
-  // },
   {
     title: "React.Js",
     collapsible: false,
@@ -57,20 +47,26 @@ export const docsConfig: DocSection[] = [
       { id: "axios", label: "axios-setup" },
       { id: "redux-setup", label: "redux-setup" },
       { id: "router-setup", label: "router-setup" },
-      // { id: "compiler", label: "Next.js Compiler" },
-      // { id: "browsers", label: "Supported Browsers" },
     ],
   },
-  // {
-  //   title: "Architecture",
-  //   collapsible: false,
-  //   items: [
-  //     { id: "accessibility", label: "Accessibility" },
-  //     { id: "fast-refresh", label: "Fast Refresh" },
-  //     { id: "compiler", label: "Next.js Compiler" },
-  //     { id: "browsers", label: "Supported Browsers" },
-  //   ],
-  // }
+   {
+    title: "Node + Express",
+    collapsible: false,
+    items: [
+      { id: "nodejs", label: "Node-setup" },
+      { id: "middleware", label: "middleware-setup" },
+      { id: "fileupload", label: "fileupload-impleament" },
+    ],
+  },
+   {
+    title: "Database",
+    collapsible: false,
+    items: [
+      { id: "mongodb", label: "MongoDb" },
+      { id: "postgress", label: "postgress" },
+      { id: "mongodb-command", label: "mongodb-command" },
+    ],
+  },
 ];
 
 

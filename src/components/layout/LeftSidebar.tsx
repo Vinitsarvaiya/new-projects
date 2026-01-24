@@ -1,8 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { Check, ChevronDown } from "lucide-react";
 import { docsConfig, versions } from "../../data/docsConfig";
+import { useNavigate } from "react-router-dom";
 
 const LeftSidebar = () => {
+  const navigate = useNavigate();
+  
   const [openSections, setOpenSections] = useState<string[]>([
     "API Reference", // open by default (nice UX)
   ]);
@@ -14,6 +17,11 @@ const LeftSidebar = () => {
         : [...prev, key]
     );
   };
+
+const navigateRoute = (route: string) => {
+  navigate(`/${route}`);
+};
+
 
   return (
     <aside className="w-full md:w-72 flex flex-col bg-black">
@@ -60,12 +68,12 @@ const LeftSidebar = () => {
                   {section.items.map((item) => (
                     <li key={item.id}>
                       {!item.children ? (
-                        <a
-                          href={`${item.id}`}
-                          className="block text-sm text-zinc-400 hover:text-blue-400"
+                        <div
+                          onClick={()=>navigateRoute(`${item.id}`)}
+                          className="block text-sm text-zinc-400 hover:text-blue-400 cursor-pointer"
                         >
                           {item.label}
-                        </a>
+                        </div>
                       ) : (
                         <>
                           <p className="text-sm text-zinc-300">
@@ -74,12 +82,12 @@ const LeftSidebar = () => {
                           <ul className="mt-2 space-y-1 pl-3">
                             {item.children.map((child) => (
                               <li key={child.id}>
-                                <a
-                                  href={`${child.id}`}
-                                  className="block text-sm text-zinc-500 hover:text-blue-400"
+                                <div
+                                  onClick={()=>navigateRoute(`${item.id}`)}
+                                  className="block text-sm text-zinc-500 hover:text-blue-400 cursor-pointer"
                                 >
                                   {child.label}
-                                </a>
+                                </div>
                               </li>
                             ))}
                           </ul>

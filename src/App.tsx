@@ -2,7 +2,7 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 // import NextJS from "./pages/NextJS";
 // import ReactJS from "./pages/ReactJS";
-// import Backend from "./pages/Backend";
+import Backend from "./pages/Backend";
 // import TailwindVite from "./pages/TailwindVite";
 // import MongoDB from "./pages/Mongodb";
 // import MongoCommands from "./pages/MongoCommands";
@@ -14,6 +14,9 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import Navbar from "./components/navbar/Navbar";
 import Docs from "./pages/Docs";
 import { reactAxios, reactDocs, reactRedux, reactRouter } from "./data/ReactDocs";
+import { authMiddlewareDocs, fileUploadDocs, nodeDocs } from "./data/NodeConfig";
+import TokenCreation from "./pages/TokenCreation";
+import { mongoCommandsDocs, mongoDBDocs, postgresPrismaDocs } from "./data/databseConfig";
 
 
 function App() {
@@ -27,10 +30,16 @@ function App() {
         <Route path="/axios" element={<Docs src={reactAxios}/>} />
         <Route path="/redux-setup" element={<Docs src={reactRedux}/>} />
         <Route path="/router-setup" element={<Docs src={reactRouter}/>} />
+        <Route path="/nodejs" element={<Docs src={nodeDocs}/>} />
+        <Route path="/middleware" element={<Docs src={authMiddlewareDocs}/>} />
+        <Route path="/fileupload" element={<Docs src={fileUploadDocs}/>} />
+        <Route path="/mongodb" element={<Docs src={mongoDBDocs}/>} />
+        <Route path="/postgress" element={<Docs src={postgresPrismaDocs}/>} />
+        <Route path="/mongodb-command" element={<Docs src={mongoCommandsDocs}/>} />
+        <Route path="/tokens" element={<TokenCreation />}/>
         {/* <Route path="/nextjs" element={<NextJS />} />
          <Route path="/hooks" element={<UserHookDoc />} />
         <Route path="/backend" element={<Backend />} />
-        <Route path="/tokens" element={<TokenCreation />}/>
         <Route path="/tailwind" element={<TailwindVite />} />
         <Route path="/mongodb" element={<MongoDB />} />
         <Route path="/postgress" element={<PostgresNode />} />
