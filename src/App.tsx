@@ -2,7 +2,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 // import NextJS from "./pages/NextJS";
 // import ReactJS from "./pages/ReactJS";
-import Backend from "./pages/Backend";
 // import TailwindVite from "./pages/TailwindVite";
 // import MongoDB from "./pages/Mongodb";
 // import MongoCommands from "./pages/MongoCommands";
