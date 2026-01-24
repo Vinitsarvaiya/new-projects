@@ -1,14 +1,22 @@
 import { useState } from "react";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+
 import ArticleIcon from "@mui/icons-material/Article";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import DoneAllIcon from "@mui/icons-material/DoneAll";
 
 interface CodeBlockProps {
   code: string;
-  type?: "terminal" | "box"; // type of block
+  language?: string; // js, ts, bash, json, etc
+  type?: "terminal" | "box";
 }
 
-const CodeBlock = ({ code, type = "terminal" }: CodeBlockProps) => {
+const CodeBlock = ({
+  code,
+  language = "typescript",
+  type = "terminal",
+}: CodeBlockProps) => {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
@@ -18,53 +26,39 @@ const CodeBlock = ({ code, type = "terminal" }: CodeBlockProps) => {
   };
 
   return (
-    <div className="relative mb-6 rounded-md border border-[#2E2E2E] w-full max-w-full">
+    <div className="relative mb-6 rounded-md border border-[#2E2E2E] w-full">
       {/* Header */}
-      <div className="flex justify-between items-center bg-[#000000] px-3 py-2 rounded-t-lg border-b border-[#2E2E2E] flex-wrap">
-        <div className="flex items-center gap-2 flex-wrap">
+      <div className="flex justify-between items-center bg-black px-3 py-2 border-b border-[#2E2E2E]">
+        <div className="flex items-center gap-2">
           {type === "terminal" ? (
             <>
               <span className="text-green-400">{">_"}</span>
-              <span className="font-mono text-xs text-zinc-200 hidden sm:inline">
+              <span className="text-xs text-zinc-200 hidden sm:inline">
                 Terminal
               </span>
             </>
           ) : (
             <>
-              <span className="text-blue-400">
-                <ArticleIcon fontSize="small" />
-              </span>
-              <span className="font-mono text-xs text-zinc-200 hidden sm:inline">
+              <ArticleIcon fontSize="small" className="text-blue-400" />
+              <span className="text-xs text-zinc-200 hidden sm:inline">
                 Code
               </span>
             </>
           )}
         </div>
-        <button
-          onClick={handleCopy}
-          className="
-            inline-flex items-center justify-center
-            p-1 sm:p-2
-            rounded
-            text-zinc-400
-            hover:text-white
-            hover:bg-zinc-700/40
-            transition-colors duration-150
-            active:scale-95
-            cursor-pointer
-          "
-          aria-label="Copy code"
-        >
+
+        <button onClick={handleCopy}>
           {copied ? (
-            <DoneAllIcon className="!text-[12px] text-green-400" />
+            <DoneAllIcon className="text-green-400 !text-[14px]" />
           ) : (
-            <ContentCopyIcon className="!text-[12px]" />
+            <ContentCopyIcon className="!text-[14px]" />
           )}
         </button>
       </div>
 
-      {/* Code block */}
-      <pre className="
+      {type === "terminal" ? (
+        <>
+          <pre className="
         bg-[#0A0A0A]
         text-zinc-200
         p-3 sm:p-4
@@ -76,8 +70,27 @@ const CodeBlock = ({ code, type = "terminal" }: CodeBlockProps) => {
         break-words
         max-w-full
       ">
-        <code>{code}</code>
-      </pre>
+            <code>{code}</code>
+          </pre>
+        </>
+      ) : (
+        <>
+          <SyntaxHighlighter
+            language={language}
+            style={vscDarkPlus}
+            customStyle={{
+              margin: 0,
+              background: "#0A0A0A",
+              fontSize: "0.85rem",
+            }}
+            showLineNumbers
+            wrapLongLines
+          >
+            {code}
+          </SyntaxHighlighter>
+        </>
+      )}
+
     </div>
   );
 };

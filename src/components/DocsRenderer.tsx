@@ -52,18 +52,17 @@ const DocsRenderer = ({ data }: DocsRendererProps) => {
             "
           >
             {doc.sections.map((section, j) => (
-             <li
-             key={j}
-             className={`
+              <li
+                key={j}
+                className={`
                space-y-3
-               ${
-                 section.important
-                   ? "border-l-2 border-yellow-400/50 pl-4"
-                   : ""
-               }
+               ${section.important
+                    ? "border-l-2 border-yellow-400/50 pl-4"
+                    : ""
+                  }
              `}
-           >
-           
+              >
+
                 {/* Section heading */}
                 <h3
                   id={`section-${i}-${j}`}
@@ -119,8 +118,10 @@ const DocsRenderer = ({ data }: DocsRendererProps) => {
                   <div className="overflow-x-auto">
                     <CodeBlock
                       code={section.code}
+                      language="tsx"
                       type="box"
                     />
+
                   </div>
                 )}
 
