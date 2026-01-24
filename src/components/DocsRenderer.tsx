@@ -13,6 +13,7 @@ interface DocsRendererProps {
       codes?: string[];
       block?: boolean;
       important?: boolean;
+      
     }[];
   }[];
 }
